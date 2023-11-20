@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    public GameObject Player { get {return player;}}
+    public static GameManager instance;
+
+    public GameObject Player;
 
     private void Awake()
     {
-        Singleton.Register(this);
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
     }
     private void Start()
     {

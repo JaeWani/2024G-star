@@ -4,32 +4,18 @@ using UnityEngine;
 
 public class DashMonster : Monster
 {
-    [SerializeField]
-    private Transform target;
-    Rigidbody2D rigid;
-
-
-    void Start()
+    [Header("DashMonster")]
+    [SerializeField] private float dashPower;
+    protected override void Start()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        base.Start();
+        isAttackLoop = true;
     }
-
-    void Update()
-    {
-        float dis = Vector3.Distance(transform.position, target.position);
-
-        if (dis <= 10)
-        {
-            Attack();
-        }
-    }
-
 
     protected override void Attack()
-    {
-
-        Vector3 moveDirection = (target.position - transform.position).normalized;
-
-        rigid.AddForce(moveDirection, ForceMode2D.Impulse);
+    {   
+        rb.velocity = Vector2.zero;
+        Vector3 moveDirection = (curPlayer.transform.position - transform.position).normalized;
+        rb.AddForce(moveDirection * dashPower, ForceMode2D.Impulse);
     }
 }

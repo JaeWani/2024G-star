@@ -15,23 +15,24 @@ public class Monster : MonoBehaviour
 
    [Header("현재 상태")]
    protected float curAttackDelay;
+   protected bool isDelay = true;
 
    [Header("설정")]
    protected bool isAttackLoop;
    protected bool isTrace;
 
    [Header("컴포넌트")]
-   protected Rigidbody2D rigidbody2D;
+   protected Rigidbody2D rb;
 
    protected virtual void Attack()
    {
 
    }
 
-   private void Start()
+   protected virtual void Start()
    {
-      curPlayer = Singleton.Get<GameManager>().Player;
-      rigidbody2D = GetComponent<Rigidbody2D>();
+      rb = GetComponent<Rigidbody2D>();
+      curPlayer = GameManager.instance.Player;
    }
 
    private void Update()
@@ -44,7 +45,7 @@ public class Monster : MonoBehaviour
    {
       if (isAttackLoop)
       {
-         curAttackDelay += Time.deltaTime;
+         if(isDelay) curAttackDelay += Time.deltaTime;
          if (curAttackDelay >= attackDelay)
          {
             Attack();
@@ -56,6 +57,6 @@ public class Monster : MonoBehaviour
 
    private void Trace()
    {
-      if (isTrace) rigidbody2D.velocity = (transform.position - curPlayer.transform.position).normalized * moveSpeed;
+      if (isTrace) rb.velocity = (transform.position - curPlayer.transform.position).normalized * moveSpeed;
    }
 }
