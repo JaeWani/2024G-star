@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemKind: 1
   kind: 0
+  itemSprite: {fileID: -1383742100, guid: 6eb16e372762d6b4cb708c44ebfab931, type: 3}
   weaponName: Sword4
   weaponSprite: {fileID: -1383742100, guid: 6eb16e372762d6b4cb708c44ebfab931, type: 3}

@@ -406,11 +406,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a2a18cb8532e434a8b490d0eb17023c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCanvas: {fileID: 30888808}
+  mainCamera: {fileID: 1664597065}
+  inventoryPanel: {fileID: 105504711}
   partsInventoryContent: {fileID: 1673217283}
   weaponInventoryContent: {fileID: 289933859}
   partsInventory: []
   weaponInventory: []
-  inventoryItemPrefab: {fileID: 0}
+  inventoryItemPrefab: {fileID: 7947528762788246024, guid: e342d04d02ab92a42af6b878649447b6, type: 3}
+  weapon: {fileID: 11400000, guid: db652921b0acd3148a56da0a30661424, type: 2}
 --- !u!1 &213271919
 GameObject:
   m_ObjectHideFlags: 0

@@ -21,6 +21,7 @@ public class Item : ScriptableObject
     
     public ItemKind itemKind;
     public Kind kind;
+    public Sprite itemSprite;
 
     void Start()
     {

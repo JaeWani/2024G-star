@@ -11,6 +11,9 @@ public class Inventory : MonoBehaviour
     public static Inventory instance;
 
     [Header("UI")]
+    public Canvas mainCanvas;
+    public Camera mainCamera;
+    public Image inventoryPanel;
     [SerializeField] private GameObject partsInventoryContent;
     [SerializeField] private GameObject weaponInventoryContent;
     [Header("인벤토리")]
@@ -30,7 +33,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        var inventoryItem = Instantiate(inventoryItemPrefab).GetComponent<InventoryItem>();
+        var inventoryItem = Instantiate(inventoryItemPrefab, weaponInventoryContent.transform).GetComponent<Inventory_Item>();
         inventoryItem.item = weapon;
     }
 
@@ -39,7 +42,7 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void AddInventoryItem(InventoryItem inventoryItem)
+    public void AddInventoryItem(Inventory_Item inventoryItem)
     {
         var item = inventoryItem.item;
         if(item.itemKind == Item.ItemKind.weapon)
