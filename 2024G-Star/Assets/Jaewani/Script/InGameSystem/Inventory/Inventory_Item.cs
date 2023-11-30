@@ -30,21 +30,10 @@ public class Inventory_Item : MonoBehaviour
         {
             dragImage = Instantiate(itemDragImage, transform.position, Quaternion.identity).GetComponent<Item_DragImage>();
 
-            dragImage.Init(item.itemSprite);
+            dragImage.Init(item);
             dragImage.transform.SetParent(Inventory.instance.inventoryPanel.transform, false);
             dragImage.transform.SetAsLastSibling();
             dragImage.transform.localPosition = transform.localPosition;
-        }
-    }
-
-    public void OnDrag(BaseEventData baseEventData)
-    {
-        if (dragImage != null)
-        {
-            PointerEventData pointerEventData = (PointerEventData)baseEventData;
-            dragImage.rectTransform.localPosition = pointerEventData.position;
-            Debug.Log("dragImage = " + dragImage.transform.localPosition);
-            Debug.Log("pointer = " + pointerEventData.position);
         }
     }
 
@@ -53,7 +42,7 @@ public class Inventory_Item : MonoBehaviour
         if (dragImage != null)
         {
             dragImage.Drop();
-            //Destroy(dragImage.gameObject);
+           Destroy(dragImage.gameObject);
             dragImage = null;
         }
     }

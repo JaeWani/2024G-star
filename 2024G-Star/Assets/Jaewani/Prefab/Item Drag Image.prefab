@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8116392691095240611}
   - component: {fileID: 5550348157801544274}
   - component: {fileID: 8974076245245692185}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Item Drag Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd65bed28d8dc947aff309ec0e2c1c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 5550348157801544274}
-  itemSprite: {fileID: 0}
   rectTransform: {fileID: 4369469678214988012}
+  image: {fileID: 5550348157801544274}
+  item: {fileID: 0}
+  itemSprite: {fileID: 0}
