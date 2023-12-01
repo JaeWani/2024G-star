@@ -17,8 +17,8 @@ public class Item_DragImage : MonoBehaviour
 
     [Header("정보")]
     public Item item;
+    public Inventory_Item inventory_Item;
     [SerializeField] private Sprite itemSprite;
-
 
 
     [Header("Singleton")]
@@ -46,14 +46,7 @@ public class Item_DragImage : MonoBehaviour
         if (obj != null)
         {
             Inventory_Slot slot = obj.GetComponent<Inventory_Slot>();
-            if(slot != null)
-            {
-                slot.Init_Item(item);
-            }
-            else
-            {
-                
-            }
+            if(slot != null) inventory.ItemDrop(slot, inventory_Item, item);
         }
     }
 

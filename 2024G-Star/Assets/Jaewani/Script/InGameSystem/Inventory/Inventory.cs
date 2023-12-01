@@ -20,11 +20,10 @@ public class Inventory : MonoBehaviour
 
     public Camera mainCamera;
     public Image inventoryPanel;
-    [SerializeField] private GameObject partsInventoryContent;
-    [SerializeField] private GameObject weaponInventoryContent;
+    [SerializeField] private GameObject inventoryContent;
     [Header("인벤토리")]
-    public List<Parts> partsInventory;
-    public List<Weapon> weaponInventory;
+    public List<Inventory_Item> inventory_Items = new List<Inventory_Item>();
+    public List<Item> inventory = new List<Item>();
 
     [Header("프리펩")]
     [SerializeField] private GameObject inventoryItemPrefab;
@@ -39,8 +38,7 @@ public class Inventory : MonoBehaviour
 
     void Start()
     {
-        var inventoryItem = Instantiate(inventoryItemPrefab, weaponInventoryContent.transform).GetComponent<Inventory_Item>();
-        inventoryItem.item = weapon;
+        CreatInventoryItem(weapon);
     }
 
     void Update()
@@ -57,6 +55,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void CreatInventoryItem(Item item)
+    {
+        var Inventory_Item = Instantiate(inventoryItemPrefab, inventoryContent.transform).GetComponent<Inventory_Item>();
+        Inventory_Item.Init_Item(item);
+        inventory_Items.Add(Inventory_Item);
+        inventory.Add(Inventory_Item.item);
+    }
+
     public GameObject GetPointerObject(Vector3 pos)
     {
         pointerEventData = new PointerEventData(eventSystem);
@@ -66,7 +72,21 @@ public class Inventory : MonoBehaviour
 
         graphicRaycaster.Raycast(pointerEventData, results);
 
-        if(results.Count <= 2) return null;
+        if (results.Count <= 2) return null;
         else return results[2].gameObject;
+    }
+
+    public void ItemDrop(Inventory_Slot slot, Inventory_Item inventory_Item, Item item)
+    {
+        var slotItem = slot.GetItem();
+
+        if (slotItem != null) CreatInventoryItem(slotItem);
+
+        slot.Init_Item(item);
+
+        inventory_Items.Remove(inventory_Item);
+        inventory.Remove(item);
+
+        Destroy(inventory_Item.gameObject);
     }
 }

@@ -90,9 +90,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169b52a29817f1a4391b2c76e6d3b197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   item: {fileID: 0}
   dragImage: {fileID: 0}
   itemDragImage: {fileID: 9188084770381383343, guid: 8b6a0eec4e40fc94cbd7d0ac7dc4cc48, type: 3}
+  image: {fileID: 7947528762788246027}
 --- !u!114 &4639737404306940974
 MonoBehaviour:
   m_ObjectHideFlags: 0

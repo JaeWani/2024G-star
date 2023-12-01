@@ -13,7 +13,10 @@ public class Inventory_Slot : MonoBehaviour
 
     void Start()
     {
-
+        if(item != null)
+        {
+            item_Image.sprite = item.itemSprite;
+        }
     }
 
     void Update()
@@ -26,5 +29,9 @@ public class Inventory_Slot : MonoBehaviour
         this.item = item;
         item_Image.sprite = item.itemSprite;
         Debug.Log("Init");
+    }
+    public Item GetItem()
+    {
+        return item;
     }
 }
