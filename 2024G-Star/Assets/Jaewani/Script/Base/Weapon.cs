@@ -11,8 +11,12 @@ public class Weapon : Item
     public string weaponName;
     public Sprite weaponSprite;
 
+    public GameObject weaponPrefab;
+    public IngameWeapon ingameWeapon;
+
     void Start()
     {
+
     }
 
     void Update()

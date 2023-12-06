@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Inventory_Slot
+  - Gun Bullet
+  - DamageObject
   layers:
   - Default
   - TransparentFX
