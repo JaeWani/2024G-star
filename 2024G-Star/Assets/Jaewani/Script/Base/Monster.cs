@@ -4,59 +4,64 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-   [Header("정보")]
-   [SerializeField] public GameObject curPlayer;
+    [Header("정보")]
+    [SerializeField] public GameObject curPlayer;
 
-   [Header("스탯")]
-   [SerializeField] protected float moveSpeed;
-   [SerializeField] protected float hp;
-   [SerializeField] protected float damage;
-   [SerializeField] protected float attackDelay;
+    [Header("스탯")]
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float hp;
+    [SerializeField] protected float damage;
+    [SerializeField] protected float attackDelay;
 
-   [Header("현재 상태")]
-   protected float curAttackDelay;
-   protected bool isDelay = true;
+    [Header("현재 상태")]
+    [SerializeField] protected float curAttackDelay;
+    protected bool isDelay = true;
 
-   [Header("설정")]
-   protected bool isAttackLoop;
-   protected bool isTrace;
+    [Header("설정")]
+    [SerializeField] protected bool isAttackLoop; // 어택이 주기적으로 공격을 할 지 말지
+    [SerializeField] protected bool isTrace; // 플레이어 방향으로 추격 할 지 말지
 
-   [Header("컴포넌트")]
-   protected Rigidbody2D rb;
+    [Header("컴포넌트")]
+    protected Rigidbody2D rigidBody;
+    protected SpriteRenderer spriteRenderer;
 
-   protected virtual void Attack()
-   {
+    protected virtual void Attack()
+    {
 
-   }
+    }
 
-   protected virtual void Start()
-   {
-      rb = GetComponent<Rigidbody2D>();
-      curPlayer = GameManager.instance.Player;
-   }
+    protected virtual void Start()
+    {
+        rigidBody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-   private void Update()
-   {
-      AttackLoop();
-      Trace();
-   }
+        curPlayer = GameManager.instance.Player;
 
-   private void AttackLoop()
-   {
-      if (isAttackLoop)
-      {
-         if(isDelay) curAttackDelay += Time.deltaTime;
-         if (curAttackDelay >= attackDelay)
-         {
-            Attack();
-            curAttackDelay = 0;
-         }
-         else return;
-      }
-   }
+    }
 
-   private void Trace()
-   {
-      if (isTrace) rb.velocity = (transform.position - curPlayer.transform.position).normalized * moveSpeed;
-   }
+    // 가상함수 << 
+    protected virtual void Update()
+    {
+        AttackLoop();
+        Trace();
+    }
+
+    private void AttackLoop()
+    {
+        if (isAttackLoop)
+        {
+            if (isDelay) curAttackDelay += Time.deltaTime;
+            if (curAttackDelay >= attackDelay)
+            {
+                Attack();
+                curAttackDelay = 0;
+            }
+            else return;
+        }
+    }
+
+    private void Trace()
+    {
+        if (isTrace) rigidBody.velocity = (transform.position - curPlayer.transform.position).normalized * moveSpeed;
+    }
 }

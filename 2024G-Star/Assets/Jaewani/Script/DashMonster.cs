@@ -13,9 +13,9 @@ public class DashMonster : Monster
     }
 
     protected override void Attack()
-    {   
-        rb.velocity = Vector2.zero;
+    {
+        rigidBody.velocity = Vector2.zero;
         Vector3 moveDirection = (curPlayer.transform.position - transform.position).normalized;
-        rb.AddForce(moveDirection * dashPower, ForceMode2D.Impulse);
+        rigidBody.AddForce(moveDirection * dashPower, ForceMode2D.Impulse);
     }
 }
