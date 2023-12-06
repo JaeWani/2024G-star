@@ -2,29 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : player
+public class Bullet : MonoBehaviour
 {
-    public float speed = 30f;
+    Rigidbody2D rigid;
 
-    void Update()
+    public void Init(Vector2 dir, float speed)
     {
-        if (transform.rotation.y == 0)
-        {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
-        }
-        else
-        {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
-        }
-        Destroy(gameObject, 2f);
-    }
+        rigid = GetComponent<Rigidbody2D>();
+        rigid.velocity = dir * speed;
 
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        if(coll.gameObject.tag == "Player")
-        {
-            hp--;
-            
-        }
+        Destroy(gameObject, 4f);
     }
 }

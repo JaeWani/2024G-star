@@ -7,7 +7,7 @@ public class player : MonoBehaviour
     [Header("변수")]
     public float moveSpeed = 10f;
     public int hp = 10;
-    [Header("컴포넌트")]
+    [Header("컴포넌트")]    
     public Rigidbody2D rigid;
 
     void Awake()
