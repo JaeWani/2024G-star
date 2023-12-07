@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Gun : IngameWeapon
 {
-    [Header ("«¡∏Æ∆È")]
-    [SerializeField] private GameObject fireEffectPrefab;
+    [Header ("πﬂªÁ ¿Ã∆Â∆Æ")]
+    [SerializeField] protected bool isEffect;
+    [SerializeField] protected string effectKey;
+
     [Header("√—æÀ")]
     [SerializeField] protected GameObject bulletPrefabs;
 
@@ -41,7 +43,7 @@ public class Gun : IngameWeapon
 
         bullet.Init(dir, speed);
 
-        if(fireEffectPrefab != null) Instantiate(fireEffectPrefab,firePos.position, Quaternion.identity);
+        if(isEffect) PoolManager.SpawnFromPool(effectKey, firePos.position);
 
         canAttack = false;
     }

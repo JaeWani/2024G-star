@@ -275,7 +275,8 @@ MonoBehaviour:
   canAttack: 0
   aimDirection: {x: 0, y: 0}
   weaponFlipY: 0
-  fireEffectPrefab: {fileID: 6519330665165277245, guid: 8897dc9c2725a2847b9478e5d6476e68, type: 3}
+  isEffect: 1
+  effectKey: Fire_Effect_1
   bulletPrefabs: {fileID: 7615942452866663878, guid: f87f9bee10a34e5458072cd052d94799, type: 3}
   firePos: {fileID: 1300678784}
   trueFlipFirePos: {fileID: 968173018}
