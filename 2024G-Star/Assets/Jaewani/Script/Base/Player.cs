@@ -21,6 +21,16 @@ public class Player : MonoBehaviour
 
     [Header("스탯")]
     [SerializeField] private float MoveSpeed;
+    [SerializeField] private float hp;
+    public float Hp
+    {
+        get => hp;
+        set
+        {
+            hp = value;
+            CheckHp();
+        }
+    }
 
     [Header("컴포넌트")]
     private Rigidbody2D Rb;
@@ -70,5 +80,16 @@ public class Player : MonoBehaviour
     private void WeaponInit()
     {
         ingameWeapon.aimDirection = GameManager.instance.mainCamera.ScreenToWorldPoint(Input.mousePosition);
+    }
+    public void Hit(float damage)
+    {
+        Hp -= damage;
+    }
+    private void CheckHp()
+    {
+        if(Hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -223,7 +223,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -247,7 +247,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 209630082, guid: a3d4863ab9a8864438f444c2d0a0a0f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 1
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -275,6 +275,7 @@ MonoBehaviour:
   canAttack: 0
   aimDirection: {x: 0, y: 0}
   weaponFlipY: 0
+  fireEffectPrefab: {fileID: 6519330665165277245, guid: 8897dc9c2725a2847b9478e5d6476e68, type: 3}
   bulletPrefabs: {fileID: 7615942452866663878, guid: f87f9bee10a34e5458072cd052d94799, type: 3}
   firePos: {fileID: 1300678784}
   trueFlipFirePos: {fileID: 968173018}

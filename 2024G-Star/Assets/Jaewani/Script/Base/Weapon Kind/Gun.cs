@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Gun : IngameWeapon
 {
+    [Header ("ÇÁ¸®Æé")]
+    [SerializeField] private GameObject fireEffectPrefab;
     [Header("ÃÑ¾Ë")]
     [SerializeField] protected GameObject bulletPrefabs;
 
@@ -38,6 +40,8 @@ public class Gun : IngameWeapon
         bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
         bullet.Init(dir, speed);
+
+        if(fireEffectPrefab != null) Instantiate(fireEffectPrefab,firePos.position, Quaternion.identity);
 
         canAttack = false;
     }

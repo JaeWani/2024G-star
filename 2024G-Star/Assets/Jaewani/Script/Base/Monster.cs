@@ -8,8 +8,17 @@ public class Monster : MonoBehaviour
     [SerializeField] public GameObject curPlayer;
 
     [Header("스탯")]
-    [SerializeField] protected float moveSpeed;
     [SerializeField] protected float hp;
+    protected float Hp
+    {
+        get => hp;
+        set
+        {
+            hp = value;
+            CheckHp();
+        }
+    }
+    [SerializeField] protected float moveSpeed;
     [SerializeField] protected float damage;
     [SerializeField] protected float attackDelay;
 
@@ -39,7 +48,6 @@ public class Monster : MonoBehaviour
 
     }
 
-    // 가상함수 << 
     protected virtual void Update()
     {
         AttackLoop();
@@ -63,5 +71,19 @@ public class Monster : MonoBehaviour
     private void Trace()
     {
         if (isTrace) rigidBody.velocity = (transform.position - curPlayer.transform.position).normalized * moveSpeed;
+    }
+
+    public void Hit(float damage)
+    {
+        Hp -= damage;
+    }
+    private void CheckHp()
+    {
+        Debug.Log("check");
+        if(hp <= 0)
+        {
+            Debug.Log("Destroy");
+            Destroy(gameObject);
+        }
     }
 }
