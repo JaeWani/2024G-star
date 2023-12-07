@@ -11,11 +11,26 @@ public class archerMonster : Monster
     [SerializeField]
     private GameObject bulletPrefabs;
 
+
+    public float followDistance = 30f;
     public float bulletSpeed = 10f;
+
 
     protected override void Update()
     {
         base.Update();
+        if (curPlayer != null)
+        {
+            Vector2 playerPos = curPlayer.transform.position;
+            Vector2 monsterPos = transform.position;
+            float distance = Vector2.Distance(playerPos, monsterPos);
+
+            if (distance > followDistance)
+            {
+                Vector2 direction = (playerPos - monsterPos).normalized;
+                transform.Translate(direction * moveSpeed * Time.deltaTime);
+            }
+        }
     }
 
     protected override void Start()
@@ -51,12 +66,4 @@ public class archerMonster : Monster
         GameObject bullet = Instantiate(bulletPrefabs, transform.position, Quaternion.identity);
         bullet.GetComponent<Bullet>().Init(direction.normalized, bulletSpeed);
     }
-
-    
 }
-
-
-
-
-
-
