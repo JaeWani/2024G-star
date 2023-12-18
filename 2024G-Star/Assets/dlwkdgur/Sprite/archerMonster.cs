@@ -19,6 +19,7 @@ public class archerMonster : Monster
     protected override void Update()
     {
         base.Update();
+
         if (curPlayer != null)
         {
             Vector2 playerPos = curPlayer.transform.position;
